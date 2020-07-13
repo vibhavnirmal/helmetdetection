@@ -1,9 +1,10 @@
-import cv2
+import time
 from tkinter import *
 from tkinter import filedialog
-from PIL import ImageTk, Image
+
+import cv2
 import numpy as np
-import time
+from PIL import Image, ImageTk
 
 camera = cv2.VideoCapture(0)
 
@@ -11,11 +12,15 @@ class Window(Frame):
 
     def __init__(self, master=None):
         Frame.__init__(self, master)
+        
+        vid_path = ""
+        global lmain
+        variable = ""
+        
         self.master = master
         self.init_window()
 
     def init_window(self):
-        global lmain, variable
 
         self.master.title("Helmet Detection")
 
@@ -33,9 +38,6 @@ class Window(Frame):
         edit.add_command(label="Undo")
         menu.add_cascade(label="Edit", menu=edit)
 
-
-
-
         # Graphics window
         imageFrame = Frame(root, width=600, height=500)
         imageFrame.grid(row=4, column=0, padx=10, pady=2)
@@ -47,8 +49,6 @@ class Window(Frame):
         # Slider window (slider controls stage position)
         sliderFrame = Frame(root, width=600, height=100)
         sliderFrame.grid(row=600, column=0, padx=10, pady=2)
-
-
 
         #live feed label
         livefeed = Label(root, text="Turn On the Live Feed~")
@@ -86,7 +86,6 @@ class Window(Frame):
         # close.grid(row=1, column=8)
 
     def add_vid(self):
-        global vid_path
         vid_path = filedialog.askopenfilename(initialdir="/", title="Select an image file",
                                               filetypes=(("MP4 files", "*.mp4"), ("All files", "*.*")))
 
