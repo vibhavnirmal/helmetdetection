@@ -15,7 +15,7 @@ class Window(Frame):
         self.init_window()
 
     def init_window(self):
-        global lmain, var
+        global lmain, variable
 
         self.master.title("Helmet Detection")
 
@@ -55,10 +55,10 @@ class Window(Frame):
         livefeed.grid(row=1, column=0)
 
         #Live Feed
-        var = IntVar()
-        live_check_button = Checkbutton(root, text = "Live Feed", variable= var, command = self.detect)
+        variable = IntVar()
+        live_check_button = Checkbutton(root, text = "Live Feed", variable= variable, command = self.detect)
         live_check_button.grid(row=1, column=1)
-        print(var)
+        print(variable)
 
         #Select the video feed from your Device
         pic_button = Button(root, text="Get the Video File", fg="blue", width=20, command=self.add_vid)

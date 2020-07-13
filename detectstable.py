@@ -1,13 +1,17 @@
-import cv2
 from tkinter import *
 from tkinter import filedialog
-from PIL import ImageTk, Image
+
+import cv2
+from PIL import Image, ImageTk
 
 
 class Window(Frame):
 
     def __init__(self, master=None):
         Frame.__init__(self, master)
+
+        global vid_path
+        
         self.master = master
         self.init_window()
 
@@ -64,7 +68,6 @@ class Window(Frame):
         # close.grid(row=1, column=8)
 
     def add_vid(self):
-        global vid_path
         vid_path = filedialog.askopenfilename(initialdir="/", title="Select an image file",
                                               filetypes=(("MP4 files", "*.mp4"), ("All files", "*.*")))
 
