@@ -10,7 +10,7 @@ class Window(Frame):
     def __init__(self, master=None):
         Frame.__init__(self, master)
 
-        global vid_path
+        self.vid_path = ""
         
         self.master = master
         self.init_window()
@@ -68,11 +68,11 @@ class Window(Frame):
         # close.grid(row=1, column=8)
 
     def add_vid(self):
-        vid_path = filedialog.askopenfilename(initialdir="/", title="Select an image file",
+        self.vid_path = filedialog.askopenfilename(initialdir="/", title="Select an image file",
                                               filetypes=(("MP4 files", "*.mp4"), ("All files", "*.*")))
 
     def load_vid(self):
-        cap = cv2.VideoCapture(vid_path)
+        cap = cv2.VideoCapture(self.vid_path)
 
         while (cap.isOpened()):
             ret, frame = cap.read()

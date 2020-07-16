@@ -3,7 +3,6 @@ from tkinter import *
 from tkinter import filedialog
 
 import cv2
-import numpy as np
 from PIL import Image, ImageTk
 
 camera = cv2.VideoCapture(0)
@@ -14,7 +13,7 @@ class Window(Frame):
         Frame.__init__(self, master)
         
         vid_path = ""
-        global lmain
+        # self.lmain
         variable = ""
         
         self.master = master
@@ -98,8 +97,8 @@ class Window(Frame):
             img = Image.fromarray(cv2image)
             imgtk = ImageTk.PhotoImage(image=img)
             lmain.imgtk = imgtk
-            lmain.configure(image=imgtk)
-            lmain.after(10, self.show_frame)
+            self.lmain.configure(image=imgtk)
+            self.lmain.after(10, self.show_frame)
             i-=1
 
     def close(self):
